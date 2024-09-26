@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Carousel</title>
+
+    <style>
+        *{
+    color: white;
+    font-family: "Poppins", sans-serif; 
+    }
+
+    body{
+        background-color: black;
+    }
+.background-container {
+    background-image: url(https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/1692887545118-VFRB57GOHHKT56XZ2F5F/hbtoo%2Bscala%2Bsoppalco.jpg);
+    width: 100%;
+    box-shadow: 1px 1px 20px 1px rgb(24, 24, 24);
+  
+    display: grid;
+
+    background-size: cover; /* Adatta l'immagine per coprire completamente il contenitore */
+    background-position: center; /* Centra l'immagine nel contenitore */
+    background-repeat: no-repeat;
+    aspect-ratio: 16/9;
+    position: relative;
+}
+
+.background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Patina nera semi-trasparente */
+    z-index: 1; /* Posiziona la patina sotto il contenuto */
+    pointer-events: none; /* Impedisce che l'overlay blocchi l'interazione con il contenuto */
+}
+
+.background-container > * {
+    position: relative;
+    z-index: 2;
+}
+
+.h1-h{
+    text-align: center;
+}
+
+.text{
+    margin-left: 110px;
+    margin-right: 100px;
+    top: 0;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.hrr{
+    background-color: white;
+    width: 100%;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.carousel-container {
+    overflow: hidden;
+    width: 600px;
+    height: 550px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 20px 1px black;
+    justify-self: center;
+    position: relative;
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+}
+
+.img-cont {
+    min-width: 100%;
+    border-radius: 10px;
+}
+
+.img-caro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    width: 100px;
+    position: absolute;
+    width: 600px;
+    z-index: 1000;
+    top: 45%;
+}
+
+.prev, .next {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+}
+
+.next{
+    justify-self: right;
+}
+
+.cont-center {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+.features{
+    justify-self: center;
+}
+
+.ul-features{
+    list-style: circle;
+    justify-self: center;
+    font-size: 18px;
+}
+
+.space{
+    height: 20px;
+}
+
+ /* Responsive design */
+ @media (max-width: 1300px) {
+
+    .carousel-container {
+        width: 280px;
+        height: 350px;
+    }
+
+    .ul-features{
+        font-size: 14px;
+    }
+
+    
+    
+    .img-caro {
+        height: 350px;
+    }
+    
+
+    .carousel-controls {
+        width: 280px;
+    }
+
+    h2{
+        text-align: center;
+        
+    }
+
+    .prev, .next {
+        font-size: 18px;
+        width: 25px;
+        height: 25px;
+    }
+
+    .features {
+        margin-left: 10px;
+        font-size: 14px;
+    }
+
+    .cont-center {
+        
+        align-items: center;
+        gap: 10px;
+    }
+
+    .text {
+        text-align: center;
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-top: 20px;
+        font-size: 17px;
+    }
+    .features h2{
+        margin: 0;
+    }
+}
+
+
+@media (max-width: 608px) {
+    .cont-center{
+        display: flex;
+        flex-flow: column;
+    }
+    .carousel-container {
+        height: 300px;
+    }
+
+    .prev, .next {
+        font-size: 13px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .text {
+        font-size: 12px;
+    }
+
+    .features ul{
+        font-size: 12px;
+    }
+    .features h2{
+        font-size: 14px;
+        margin: 0;
+    }
+
+}
+    </style>
+</head>
+<body>
+    <div>
+        <h1 class="h1-h">Buildings</h1>
+        <div class="background-container">
+            <div class="text">
+                <div class="text-int">
+                    <h2>#2FLOOR</h2>
+                    <div class="hrr"></div>
+                </div>
+                <p>#2FLOOR è lo spazio locato al piano superiore della struttura. Una location dallo stile contemporaneo interamente arredata, perfetta per una ambientazione lounge data dal grande bar centrale che domina la sala. Funzionale per eventi medio/grandi. Consigliata per cene ed eventi privati.</p>
+            </div>
+            <div class="cont-center">
+                <div class="features">
+                    <h2>FEATURES</h2>
+                    <ul class="ul-features">
+                        <li>PIANO +1</li>
+                        <li>1000 mq</li>
+                        <li>CUCINA PROFESSIONALE</li>
+                        <li>BAR PREMIUM</li>
+                        <li>WiFi</li>
+                        <li>SERVIZI IGIENICI</li>
+                        <li>BALCONE (VISTA MARE)</li>
+                        <li>H SOLAIO 5m // H SOTTOTRAVE 4.5m</li>
+                        <li>IMPIANTO AUDIO DIFFUSIONE</li>
+                        <li>IMPIANTO LUCI PER EVENTI</li>
+                        <li>SPAZIO DJ BOOTH</li>
+                        <li><a href="https://hbtoo.it/s/HBTOO-2ND-FLOOR.pdf">Piantina PDF della struttura</a></li>
+                    </ul>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-controls">
+                        <button class="prev"><</button>
+                        <button class="next">></button>
+                    </div>
+                    <div class="carousel-images">
+                        
+                        <div class="img-cont">
+                                <iframe style="border: none;" src="https://drive.google.com/file/d/1x3LFFcyEaZrF7OYYsI1WSCmVPt7ToIcX/preview" width="100%" height="100%"></iframe>
+                        </div>
+                        <div class="img-cont">
+                            <img class="img-caro" src="https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/d4ea505f-993d-4702-ba67-b2f0b3e1730b/hbtoo+floor+0+%282%29.jpg" alt="">
+                        </div>
+                        <div class="img-cont">
+                            <img class="img-caro" src="https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/1f6ebe3b-2d23-48e5-9e92-f40aecf35cdb/hbtoo+2nd+floor.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="background-container">
+            <div class="text">
+                <div class="text-int">
+                    <h2>#1FLOOR</h2>
+                    <div class="hrr"></div>
+                </div>
+                <p>#1FLOOR è lo spazio locato al piano terra in prossimità dell'ingresso della struttura. Un open space dal look industriale ed essenziale: Grandi pareti di cemento. Consigliata per cene ed eventi privati.</p>
+            </div>
+            <div class="cont-center">
+                <div class="features">
+                    <h2>FEATURES</h2>
+                    <ul class="ul-features">
+                        <li>PIANO 0</li>
+                        <li>1000 mq</li>
+                        <li>CUCINA PROFESSIONALE</li>
+                        <li>BAR PREMIUM</li>
+                        <li>RISCALDAMENTO/ARIA CONDIZIONATA</li>
+                        <li>WiFi</li>
+                        <li>SERVIZI IGIENICI</li>
+                        <li>AMPIE SEDUTE</li>
+                        <li>AREA RISTORANTE</li>
+                        <li>BALCONE (VISTA MARE)</li>
+                        <li>H SOLAIO 5m // H SOTTOTRAVE 4.5m</li>
+                        <li>IMPIANTO AUDIO DIFFUSIONE</li>
+                        <li>IMPIANTO LUCI PER EVENTI</li>
+                        <li>SPAZIO DJ BOOTH</li>
+                        <li><a href="https://hbtoo.it/s/HBTOO-piano-terra.pdf">Piantina PDF della struttura</a></li>
+                    </ul>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-controls">
+                        <button class="prev"><</button>
+                        <button class="next">></button>
+                    </div>
+                    <div class="carousel-images">
+                        <div class="img-cont">
+                            <img class="img-caro" src="https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/3030bff3-45b5-46fe-9a7d-cdd8f4c29738/piano+zero+1.jpg" alt="">
+                        </div>
+                        <div class="img-cont">
+                            <img class="img-caro" src="https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/a035eb6b-b97d-4c68-8b8c-94e84ae4217d/piano+zero+2.jpg?format=500w" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+        </div>
+
+        <div class="space"></div>
+
+        <div class="background-container">
+            <div class="text">
+                <div class="text-int">
+                    <h2>BASEMENT</h2>
+                    <div class="hrr"></div>
+                </div>
+                <p>BASEMENT è l'ultima invenzione in casa HBtoo. Un nuovo spazio locato al livello del mare, appena ristrutturato e ridisegnato dalla proprietà.</p>
+            </div>
+            <div class="cont-center">
+                <div class="features">
+                    <h2>FEATURES</h2>
+                    <ul class="ul-features">
+                        <li>PIANO -1</li>
+                        <li>700 mq</li>
+                        <li>BAR PREMIUM</li>
+                        <li>DOPPIO PROIETTORE VIDEO</li>
+                        <li>SERVIZI IGIENICI</li>
+                        <li>H SOLAIO 4m // H SOTTOTRAVE 3.5m</li>
+                        <li>IMPIANTO AUDIO DIFFUSIONE</li>
+                        <li>IMPIANTO LUCI PER EVENTI</li>
+                        <li>SPAZIO DJ BOOTH</li>
+                        <li><a href="https://hbtoo.it/s/TRF_HBTOO_PIANO-TERRA_DEF.dwg">Piantina DWG della struttura</a></li>
+                    </ul>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-controls">
+                        <button class="prev"><</button>
+                        <button class="next">></button>
+                    </div>
+                    <div class="carousel-images">
+                        <div class="img-cont">
+                            <img class="img-caro" src="https://images.squarespace-cdn.com/content/v1/53ae839ae4b03bad691a6726/2688da11-297e-44d7-b40a-96c2f28d71e2/hbtoo+scale+basement.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space"></div>
+        </div>
+
+        <div class="space"></div>
+    </div>
+
+<script>
+
+    window.addEventListener('load', () => {
+        const carousels = document.querySelectorAll('.carousel-container'); // Seleziona tutti i contenitori carosello
+
+        carousels.forEach((carousel, index) => {
+            const images = carousel.querySelectorAll('.img-cont');
+            const prevButton = carousel.querySelector('.prev');
+            const nextButton = carousel.querySelector('.next');
+            
+            let currentIndex = 0;
+
+            function showImage(index) {
+                const imageWidth = images[0].clientWidth; // Assumi che le immagini abbiano tutte la stessa larghezza
+                carousel.querySelector('.carousel-images').style.transform = `translateX(${-index * imageWidth}px)`; // Trasla il "track" del carosello
+            }
+
+            // Bottone "Prev"
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                showImage(currentIndex);
+            });
+
+            // Bottone "Next"
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                showImage(currentIndex);
+            });
+        });
+    })
+
+</script>
+</body>
+</html>
